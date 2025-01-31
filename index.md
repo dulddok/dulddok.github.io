@@ -4,6 +4,14 @@ layout: home
 nav_order: 1
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
 permalink: /
+hero_body: "Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
+hero_heading: "Focus on writing good documentation"
+hero_ctas:
+  - label: "Get started now"
+    link: "#getting-started"
+  - label: "View it on GitHub"
+    link: "https://github.com/labsyspharm/just-the-docs-lsp"
+    target: "_blank"
 ---
 
 # Focus on writing good documentation
