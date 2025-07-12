@@ -3,3 +3,5 @@ _site
 .jekyll-cache
 .jekyll-metadata
 _posts
+# Reference materials (not published)
+docs/_reference/
