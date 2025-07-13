@@ -17,7 +17,7 @@ hero_ctas:
 # 덜똑Log
 {: .fs-9 }
 
-써보고 싶었던 기술들, 그리고 시행착오와 삽질의 흔적들을 기록합니다.
+써보고 싶었던 기술들, 그리고 시행착오와 삽질의 흔적들을 기록합니다. 
 {: .fs-6 .fw-300 }
 
 [최근 문서 보기](#recent-docs){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -35,10 +35,10 @@ hero_ctas:
 
 <div id="recent-docs">
 
-{% assign all_docs = site.pages | where_exp: "page", "page.path contains 'docs/' and page.path != 'docs/index.md'" | sort: "title" %}
+{% assign all_docs = site.pages | sort: "title" %}
 {% assign recent_docs = all_docs | slice: 0, 6 %}
 {% for doc in recent_docs %}
-  {% unless doc.path contains 'index.md' or doc.path contains 'test-' %}
+  {% if doc.path contains 'docs/' and doc.path != 'docs/index.md' and doc.path != 'docs/test-giscus.md' %}
     <div class="recent-doc-item" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px;">
       <h3 style="margin: 0 0 0.5rem 0;">
         <a href="{{ doc.url | relative_url }}">{{ doc.title | default: doc.name | replace: '.md', '' | replace: '-', ' ' | capitalize }}</a>
@@ -53,7 +53,7 @@ hero_ctas:
         {% endif %}
       </small>
     </div>
-  {% endunless %}
+  {% endif %}
 {% endfor %}
 
 {% if recent_docs.size == 0 %}
