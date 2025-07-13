@@ -1,64 +1,46 @@
-<p align="right">
-    <a href="https://badge.fury.io/rb/just-the-docs"><img src="https://badge.fury.io/rb/just-the-docs.svg" alt="Gem version"></a> <a href="https://github.com/just-the-docs/just-the-docs/actions/workflows/ci.yml"><img src="https://github.com/just-the-docs/just-the-docs/actions/workflows/ci.yml/badge.svg" alt="CI Build status"></a> <a href="https://app.netlify.com/sites/just-the-docs/deploys"><img src="https://api.netlify.com/api/v1/badges/9dc0386d-c2a4-4077-ad83-f02c33a6c0ca/deploy-status" alt="Netlify Status"></a>
-</p>
-<br><br>
 <p align="center">
-    <h1 align="center">Just the Docs</h1>
-    <p align="center">A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.<br>Easily hosted on GitHub Pages with few dependencies.</p>
-    <p align="center"><strong><a href="https://just-the-docs.com/">See it in action!</a></strong></p>
-    <br><br><br>
+    <h1 align="center">덜똑의 기술 블로그</h1>
+    <p align="center">기술과 개발에 대한 생각을 나누는 공간입니다.<br>다양한 기술 이야기를 담고 있습니다.</p>
+    <p align="center"><strong><a href="https://dulddok.github.io/">블로그 바로가기</a></strong></p>
+    <br><br>
 </p>
 
-<p align="center">A video walkthrough of various Just the Docs features</p>
+## 📝 블로그 소개
 
-https://user-images.githubusercontent.com/85418632/211225192-7e5d1116-2f4f-4305-bb9b-437fe47df071.mp4
+안녕하세요! 저는 **덜똑**입니다. 
 
-## Installation
+이 블로그는 기술과 개발에 대한 다양한 경험과 지식을 공유하는 공간입니다.
 
-### Use the template
+### 🎯 주요 콘텐츠
 
-The [Just the Docs Template] provides the simplest, quickest, and easiest way to create a new website that uses the Just the Docs theme. To get started with creating a site, just click "[use the template]"!
+- **기술 문서**
+- **개발 팁**: 개발 과정에서 얻은 경험과 노하우
+- **기술 리뷰**: 다양한 기술과 도구에 대한 리뷰
+- **문제 해결**: 개발 및 운영 과정에서 마주한 문제들과 해결 방법
 
-Note: To use the theme, you do ***not*** need to clone or fork the [Just the Docs repo]! You should do that only if you intend to browse the theme docs locally, contribute to the development of the theme, or develop a new theme based on Just the Docs.
+### 🛠️ 기술 스택
 
-You can easily set the site created by the template to be published on [GitHub Pages] – the [template README] file explains how to do that, along with other details.
+- **Jekyll**: 정적 사이트 생성기
+- **Just the Docs**: Jekyll 테마
+- **GitHub Pages**: 호스팅 플랫폼
+- **Giscus**: 댓글 시스템 (GitHub Discussions 연동)
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^2] And you will be able to deploy your local build to a different platform than GitHub Pages.
+### 🚀 로컬 개발
 
-More specifically, the created site:
+이 블로그는 Jekyll을 기반으로 구축되었습니다. 로컬에서 개발하려면:
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+```bash
+# 의존성 설치
+bundle install
 
-Other than that, you're free to customize sites that you create with the template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+# 로컬 서버 실행
+bundle exec jekyll serve
 
-### Use RubyGems
-
-Alternatively, you can install the theme as a Ruby Gem, without creating a new site.
-
-Add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "just-the-docs"
+# Docker 사용 시
+docker-compose up
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
-
-```yaml
-theme: just-the-docs
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install just-the-docs
-
-Alternatively, you can run it inside Docker while developing your site
-
-    $ docker-compose up
+사이트는 `http://localhost:4000`에서 확인할 수 있습니다.
 
 ## Usage
 
