@@ -61,7 +61,7 @@ exclude:
   # theme test code
   - fixtures/
   # reference materials (not published)
-  - docs/_reference/
+  - docs/reference/
 
 # Set a path/url to a logo that will be displayed instead of the title
 #logo: "/assets/images/just-the-docs.png"
@@ -114,6 +114,10 @@ mermaid:
 
 # Enable or disable heading anchors
 heading_anchors: true
+
+# Giscus Comments Configuration
+# Enable or disable comments globally
+comments: true
 
 # Aux links for the upper right navigation
 aux_links:

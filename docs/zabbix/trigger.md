@@ -2,7 +2,7 @@
 layout: default
 title: Trigger 구성 방식
 parent: Zabbix 기술 문서
-nav_order: 3
+nav_order: 2
 ---
 
 # Trigger 구성 방식

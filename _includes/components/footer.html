@@ -1,6 +1,9 @@
 {% capture footer_custom %}
   {%- include footer_custom.html -%}
 {% endcapture %}
+
+{%- include components/giscus.html -%}
+
 {% if footer_custom != "" or site.last_edit_timestamp or site.gh_edit_link %}
   <hr>
   <footer>

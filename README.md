@@ -64,6 +64,20 @@ Alternatively, you can run it inside Docker while developing your site
 
 [View the documentation][Just the Docs] for usage information.
 
+### Giscus Comments
+
+This site includes Giscus comments system for GitHub Discussions. To configure:
+
+1. **Enable/Disable globally**: Set `comments: false` in `_config.yml` to disable comments site-wide
+2. **Disable on specific pages**: Add `comments: false` to the front matter of any page
+3. **Automatic exclusions**: Comments are automatically disabled on:
+   - Home page (`layout: home`)
+   - 404 error page
+   - Pages with `comments: false` in front matter
+4. **Configuration**: Edit `_includes/components/giscus.html` to modify Giscus settings
+
+The comments will appear at the bottom of pages and posts, allowing visitors to leave comments using their GitHub accounts.
+
 ## Contributing
 
 Bug reports, proposals of new features, and pull requests are welcome on GitHub at https://github.com/just-the-docs/just-the-docs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

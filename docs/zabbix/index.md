@@ -3,6 +3,7 @@ layout: default
 title: Zabbix 기술 문서
 nav_order: 1
 has_children: true
+comments: false
 ---
 
 # Zabbix 기술 문서

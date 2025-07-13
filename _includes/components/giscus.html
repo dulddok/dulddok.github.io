@@ -1,0 +1,36 @@
+{%- comment -%}
+  Giscus Comments System
+  To disable comments on a specific page, add `comments: false` to the front matter
+  To disable comments globally, set `comments: false` in _config.yml
+  Comments are automatically disabled on home layout and 404 pages
+{%- endcomment -%}
+
+{%- comment -%} Check if comments should be disabled {%- endcomment -%}
+{%- assign comments_disabled = false -%}
+{%- if page.comments == false or layout.comments == false or site.comments == false -%}
+  {%- assign comments_disabled = true -%}
+{%- endif -%}
+{%- if page.layout == 'home' or page.title == '404' -%}
+  {%- assign comments_disabled = true -%}
+{%- endif -%}
+
+{%- unless comments_disabled -%}
+  <div class="giscus-comments">
+    <h2 class="text-delta">댓글</h2>
+    <script src="https://giscus.app/client.js"
+            data-repo="dulddok/dulddok.github.io"
+            data-repo-id="R_kgDONFmnuw"
+            data-category="Announcements"
+            data-category-id="DIC_kwDONFmnu84Cp3iI"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light_protanopia"
+            data-lang="ko"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </div>
+{%- endunless -%} 

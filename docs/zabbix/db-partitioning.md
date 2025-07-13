@@ -2,7 +2,7 @@
 layout: default
 title: DB 파티셔닝
 parent: Zabbix 기술 문서
-nav_order: 4
+nav_order: 3
 ---
 
 # DB 파티셔닝

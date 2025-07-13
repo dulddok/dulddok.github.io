@@ -2,7 +2,7 @@
 layout: default
 title: 문제 해결 가이드
 parent: Zabbix 기술 문서
-nav_order: 6
+nav_order: 4
 ---
 
 # 문제 해결 가이드

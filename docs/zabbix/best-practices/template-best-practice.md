@@ -2,7 +2,7 @@
 layout: default
 title: 템플릿 모범 사례
 parent: Zabbix 기술 문서
-nav_order: 5
+nav_order: 4
 ---
 
 # 템플릿 모범 사례
