@@ -35,7 +35,7 @@ hero_ctas:
 
 <div id="recent-docs">
 
-{% assign all_docs = site.pages | sort: "title" %}
+{% assign all_docs = site.pages %}
 {% assign recent_docs = all_docs | slice: 0, 6 %}
 {% for doc in recent_docs %}
   {% if doc.path contains 'docs/' and doc.path != 'docs/index.md' and doc.path != 'docs/test-giscus.md' %}
