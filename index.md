@@ -3,33 +3,66 @@ title: Home
 layout: home
 nav_order: 0
 comments: false
-description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+description: "덜똑의 기술 블로그 - 모니터링, 개발 팁, 기술 리뷰를 다루는 개발자 블로그입니다. 실무 경험과 문제 해결 방법을 공유합니다."
 permalink: /
-hero_body: "Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages."
-hero_heading: "Focus on writing good documentation"
+hero_body: "덜똑의 기술 블로그 - 모니터링, 개발 실무 팁, 그리고 다양한 기술 경험을 공유하는 공간입니다."
+hero_heading: "기술과 경험을 나누는 개발자 블로그"
 hero_ctas:
-  - label: "Get started now"
-    link: "#getting-started"
-  - label: "View it on GitHub"
-    link: "https://github.com/labsyspharm/just-the-docs-lsp"
-    target: "_blank"
+  - label: "최근 문서 보기"
+    link: "#recent-docs"
+
+
 ---
 
-# Focus on writing good documentation
+# 덜똑Log
 {: .fs-9 }
 
-Just the Docs gives your documentation a jumpstart with a responsive Jekyll theme that is easily customizable and hosted on GitHub Pages.
+써보고 싶었던 기술들, 그리고 시행착오와 삽질의 흔적들을 기록합니다.
 {: .fs-6 .fw-300 }
 
-[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[최근 문서 보기](#recent-docs){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+<!-- [GitHub 프로필](https://github.com/dulddok){: .btn .fs-5 .mb-4 .mb-md-0 } -->
 
 ---
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yourusername) 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yourusername/)
+
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dulddok) 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yourusername/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dulddok/)
+
+---
+
+## 📝 최근 문서
+
+<div id="recent-docs">
+
+{% assign all_docs = site.pages | where_exp: "page", "page.path contains 'docs/' and page.path != 'docs/index.md'" | sort: "title" %}
+{% assign recent_docs = all_docs | slice: 0, 6 %}
+{% for doc in recent_docs %}
+  {% unless doc.path contains 'index.md' or doc.path contains 'test-' %}
+    <div class="recent-doc-item" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px;">
+      <h3 style="margin: 0 0 0.5rem 0;">
+        <a href="{{ doc.url | relative_url }}">{{ doc.title | default: doc.name | replace: '.md', '' | replace: '-', ' ' | capitalize }}</a>
+      </h3>
+      {% if doc.description %}
+        <p style="margin: 0 0 0.5rem 0; color: var(--text-muted);">{{ doc.description }}</p>
+      {% endif %}
+      <small style="color: var(--text-muted);">
+        📁 {{ doc.path | split: '/' | slice: 1, 2 | join: ' > ' }}
+        {% if doc.date %}
+          • 📅 {{ doc.date | date: "%Y년 %m월 %d일" }}
+        {% endif %}
+      </small>
+    </div>
+  {% endunless %}
+{% endfor %}
+
+{% if recent_docs.size == 0 %}
+  <p>아직 작성된 문서가 없습니다. 곧 새로운 내용으로 찾아뵙겠습니다! 🚀</p>
+{% endif %}
+
+</div>
+
+---
 
 {: .warning }
 > This website documents the features of the current `main` branch of the Just the Docs theme. See [the CHANGELOG]({% link CHANGELOG.md %}) for a list of releases, new features, and bug fixes.
