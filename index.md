@@ -17,7 +17,7 @@ hero_ctas:
 # 덜똑Log
 {: .fs-9 }
 
-써보고 싶었던 기술들, 그리고 시행착오와 삽질의 흔적들을 기록합니다. 
+정리하고 싶은 것들, 그리고 시행착오와 삽질의 흔적들을 기록합니다. 
 {: .fs-6 .fw-300 }
 
 [최근 문서 보기](#recent-docs){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -64,6 +64,7 @@ hero_ctas:
 
 ---
 
+<!--
 {: .warning }
 > This website documents the features of the current `main` branch of the Just the Docs theme. See [the CHANGELOG]({% link CHANGELOG.md %}) for a list of releases, new features, and bug fixes.
 
@@ -144,3 +145,4 @@ Just the Docs is committed to fostering a welcoming community.
 [GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
 [customize]: #customize
 [use the template]: https://github.com/just-the-docs/just-the-docs-template/generate
+-->
