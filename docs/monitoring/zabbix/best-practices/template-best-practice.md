@@ -1,8 +1,8 @@
 ---
 layout: default
 title: 템플릿 모범 사례
-parent: Zabbix 모니터링 시스템
-nav_order: 4
+parent: Zabbix 실무 운영 팁
+nav_order: 1
 ---
 
 # 템플릿 모범 사례

@@ -42,6 +42,7 @@ has_children: true
 - **Prometheus**: 클라우드 네이티브 모니터링
 - **Grafana**: 시각화 및 대시보드
 - **Nagios**: 전통적인 모니터링 시스템
+- **Pinpoint**: 오픈소스 APM 모니터링
 
 ### 상용 솔루션
 - **Datadog**: 클라우드 기반 모니터링
@@ -68,8 +69,8 @@ has_children: true
 ## 관련 문서
 
 - [Zabbix 모니터링 시스템](./zabbix/)
-- [모니터링 모범 사례](./best-practices/)
-- [알림 설정 가이드](./alerts/)
+- [핀포인트 APM 모니터링](./pinpoint/)
+- [Cacti 모니터링](./cacti/)
 
 ## 다음 단계
 
