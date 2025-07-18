@@ -1,12 +1,13 @@
 ---
 layout: default
-title: Zabbix 기술 문서
+title: Zabbix 모니터링 시스템
+parent: 모니터링 시스템
 nav_order: 1
 has_children: true
 comments: false
 ---
 
-# Zabbix 기술 문서
+# Zabbix 모니터링 시스템
 
 ## 개요
 Zabbix는 엔터프라이즈급 오픈소스 모니터링 솔루션입니다. 이 문서에서는 Zabbix의 주요 기능과 설정 방법에 대해 설명합니다.

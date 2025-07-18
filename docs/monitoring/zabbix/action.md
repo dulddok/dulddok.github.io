@@ -1,6 +1,6 @@
 ---
 title: "Action 설정 및 관리"
-parent: "Zabbix 기술 문서"
+parent: "Zabbix 모니터링 시스템"
 nav_order: 4
 description: "Zabbix Action 설정 방법과 알림 관리에 대한 가이드입니다."
 ---

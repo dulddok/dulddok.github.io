@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 문제 해결 가이드
-parent: Zabbix 기술 문서
+parent: Zabbix 모니터링 시스템
 nav_order: 5
 ---
 
