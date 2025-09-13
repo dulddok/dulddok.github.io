@@ -3,10 +3,10 @@ title: Home
 layout: home
 nav_order: 0
 comments: false
-description: "덜똑의 기술 블로그 - 모니터링, 개발 팁, 기술 리뷰를 다루는 개발자 블로그입니다. 실무 경험과 문제 해결 방법을 공유합니다."
+description: "덜똑의 기술 블로그 - 모니터링, 개발 팁, 기술 리뷰를 다루는 블로그입니다. 실무 경험과 문제 해결 방법을 공유합니다."
 permalink: /
 hero_body: "덜똑의 기술 블로그 - 모니터링, 개발 실무 팁, 그리고 다양한 기술 경험을 공유하는 공간입니다."
-hero_heading: "기술과 경험을 나누는 개발자 블로그"
+hero_heading: "기술과 경험을 나누는 블로그"
 hero_ctas:
   - label: "최근 문서 보기"
     link: "#recent-docs"
@@ -17,7 +17,7 @@ hero_ctas:
 # 덜똑Log
 {: .fs-9 }
 
-정리하고 싶은 것들, 그리고 시행착오와 삽질의 흔적들을 기록합니다. 
+정리하고 싶은 것들을 기록합니다. 
 {: .fs-6 .fw-300 }
 
 [최근 문서 보기](#recent-docs){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -26,6 +26,7 @@ hero_ctas:
 ---
 
 
+<a href="https://sunnin.tistory.com" target="_blank" rel="noopener noreferrer">![Tistory](https://img.shields.io/badge/Tistory-FF5722?style=for-the-badge&logo=tistory&logoColor=white)</a>
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dulddok) 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dulddok/)
 
