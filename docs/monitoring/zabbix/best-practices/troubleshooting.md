@@ -1,8 +1,8 @@
 ---
 layout: default
 title: 문제 해결 가이드
-parent: Zabbix 기술 문서
-nav_order: 5
+parent: Zabbix 실무 운영 팁
+nav_order: 2
 ---
 
 # 문제 해결 가이드
