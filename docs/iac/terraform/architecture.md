@@ -95,3 +95,40 @@ module "vpc" {
 }
 ```
 
+## 예시: ALB 모듈 핵심 블록
+```hcl
+resource "aws_lb" "main" {
+  name               = "${var.project_name}-${var.environment}-alb"
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.alb.id]
+  subnets            = var.public_subnet_ids
+}
+
+resource "aws_lb_target_group" "main" {
+  name     = "${var.project_name}-${var.environment}-tg"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
+}
+```
+
+## 예시: EC2 모듈 핵심 블록
+```hcl
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+}
+
+resource "aws_launch_template" "main" {
+  instance_type = var.instance_type
+  image_id      = data.aws_ami.amazon_linux.id
+}
+
+resource "aws_autoscaling_group" "main" {
+  vpc_zone_identifier = var.subnet_ids
+  desired_capacity    = var.desired_capacity
+  min_size            = var.min_size
+  max_size            = var.max_size
+}
+```
+
