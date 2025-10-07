@@ -75,3 +75,11 @@ h1.fs-9 {
   font-weight: 800 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); // 미묘한 그림자로 더 굵게 보이게
 }
+
+// Rouge 버전 차이로 HCL/terraform 코드에서 연산자/구두점이 과도하게 강조되는 이슈 보정
+.language-hcl .o,
+.language-hcl .p,
+.language-terraform .o,
+.language-terraform .p {
+  color: var(--body-text-color, #383942);
+}
