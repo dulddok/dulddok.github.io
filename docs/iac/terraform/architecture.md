@@ -2,6 +2,7 @@
 layout: default
 title: 아키텍처
 nav_order: 3
+parent: Terraform Dulddok Lab
 ---
 
 ## 개요

@@ -2,6 +2,7 @@
 layout: default
 title: 보안과 베스트 프랙티스
 nav_order: 5
+parent: Terraform Dulddok Lab
 ---
 
 ## 공개 저장소 원칙

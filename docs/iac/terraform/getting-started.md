@@ -2,6 +2,7 @@
 layout: default
 title: 시작하기
 nav_order: 2
+parent: Terraform Dulddok Lab
 ---
 
 ## 사전 준비

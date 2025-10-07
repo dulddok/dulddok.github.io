@@ -2,6 +2,7 @@
 layout: default
 title: 실행과 자동화
 nav_order: 4
+parent: Terraform Dulddok Lab
 ---
 
 ## Makefile 사용

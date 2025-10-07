@@ -2,6 +2,8 @@
 layout: default
 title: Terraform Dulddok Lab
 nav_order: 1
+parent: IAC
+has_children: true
 ---
 
 # Terraform Dulddok Lab
