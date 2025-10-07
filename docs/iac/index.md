@@ -1,12 +1,12 @@
 ---
 layout: default
-title: IAC
+title: IaC
 nav_order: 20
 has_children: true
 comments: false
 ---
 
-# IAC
+# IaC
 
 Infrastructure as Code 관련 문서 모음입니다.
 

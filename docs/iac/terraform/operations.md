@@ -7,6 +7,7 @@ parent: Terraform
 
 ## Makefile 사용
 ```bash
+# stg, prod 환경 수행 시 dev 부분 변경 
 make plan-dev-networking
 make deploy-dev-networking
 make destroy-dev-networking
@@ -27,7 +28,7 @@ make destroy-dev-compute
 반복적인 작업은 Make 타깃으로 제공됩니다.
 
 ```bash
-# 계획
+# 계획 (dev 환경 외 stg, prod 도 동일방식으로 수행 - make *-{stg|prod}-*)
 make plan-dev-networking
 make plan-dev-compute
 
