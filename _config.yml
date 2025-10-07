@@ -66,6 +66,9 @@ exclude:
   - docs/network/
   - docs/zabbix/
   - docs/monitoring/
+  # do not publish README guidance pages under assets/images on GitHub Pages
+  - assets/images/README.md
+  - assets/images/**/README.md
 
 # Set a path/url to a logo that will be displayed instead of the title
 #logo: "/assets/images/just-the-docs.png"
