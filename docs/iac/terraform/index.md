@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Terraform Dulddok Lab
+title: Terraform
 nav_order: 1
-parent: IAC
+parent: IaC
 has_children: true
 ---
 
@@ -12,8 +12,11 @@ has_children: true
 - 예제 파일(`*.example`)을 복사해 실제 값을 채운 뒤 실행하세요.
 
 ## 문서 목차
-- 시작하기: getting-started.md
-- 아키텍처: architecture.md
-- 실행/자동화: operations.md
-- 보안/베스트프랙티스: security.md
+ - 시작하기: getting-started.md
+ - 아키텍처: architecture.md
+ - 실행/자동화: operations.md
+ - 보안/베스트프랙티스: security.md
+
+## 참고 저장소
+- 프로젝트 코드와 스크립트: [dulddok/Terraform-Dulddok](https://github.com/dulddok/Terraform-Dulddok)
 
