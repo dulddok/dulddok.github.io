@@ -44,14 +44,14 @@ cp environments/dev/networking/terraform.tfvars.example environments/dev/network
 자세한 예제와 스크립트는 저장소를 참고하세요: [dulddok/Terraform-Dulddok](https://github.com/dulddok/Terraform-Dulddok)
 
 ### 예시: backend.tf / backend.hcl
-```hcl
+```terraform
 # backend.tf (값은 backend.hcl로 주입)
 terraform {
   backend "s3" {}
 }
 ```
 
-```hcl
+```terraform
 # backend.hcl (예시)
 bucket         = "<your-tfstate-bucket>"
 key            = "dev/networking/terraform.tfstate"
@@ -61,7 +61,7 @@ dynamodb_table = "<your-lock-table>"
 ```
 
 ### 예시: provider.tf
-```hcl
+```terraform
 provider "aws" {
   region = var.aws_region
 

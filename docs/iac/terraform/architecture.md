@@ -59,7 +59,7 @@ environments/{dev,staging,prod}/
 - 변경의 파급을 최소화하기 위해 상위(네트워킹) → 하위(컴퓨트/데이터) 순으로 배포합니다.
 
 ## 예시: VPC 모듈 핵심 블록
-```hcl
+```terraform
 resource "aws_vpc" "main" {
   cidr_block           = var.vpc_cidr
   enable_dns_hostnames = true
@@ -81,7 +81,7 @@ resource "aws_subnet" "public" {
 ```
 
 ## 예시: 환경에서 모듈 호출
-```hcl
+```terraform
 module "vpc" {
   source = "../../../modules/vpc"
 
@@ -96,7 +96,7 @@ module "vpc" {
 ```
 
 ## 예시: ALB 모듈 핵심 블록
-```hcl
+```terraform
 resource "aws_lb" "main" {
   name               = "${var.project_name}-${var.environment}-alb"
   load_balancer_type = "application"
@@ -113,7 +113,7 @@ resource "aws_lb_target_group" "main" {
 ```
 
 ## 예시: EC2 모듈 핵심 블록
-```hcl
+```terraform
 data "aws_ami" "amazon_linux" {
   most_recent = true
   owners      = ["amazon"]
