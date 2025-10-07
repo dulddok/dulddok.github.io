@@ -53,6 +53,28 @@ make deploy-dev
 ./scripts/deploy.sh dev compute apply
 ```
 
+## 예시: deploy.sh 핵심 로직
+```bash
+#!/bin/bash
+set -e
+
+ENVIRONMENT=$1
+SERVICE=$2
+ACTION=$3
+
+SERVICE_DIR="environments/$ENVIRONMENT/$SERVICE"
+cd "$SERVICE_DIR"
+
+terraform init
+terraform validate
+
+case $ACTION in
+  plan) terraform plan -var-file="terraform.tfvars" ;;
+  apply) terraform apply -var-file="terraform.tfvars" -auto-approve ;;
+  destroy) terraform destroy -var-file="terraform.tfvars" -auto-approve ;;
+esac
+```
+
 ## 검증 및 포맷팅
 ```bash
 # 환경별 검증

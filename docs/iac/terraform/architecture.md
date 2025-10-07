@@ -58,3 +58,40 @@ environments/{dev,staging,prod}/
 - 환경별 차이는 `terraform.tfvars`로 주입하고, 공통값은 모듈 변수의 기본값으로 유지합니다.
 - 변경의 파급을 최소화하기 위해 상위(네트워킹) → 하위(컴퓨트/데이터) 순으로 배포합니다.
 
+## 예시: VPC 모듈 핵심 블록
+```hcl
+resource "aws_vpc" "main" {
+  cidr_block           = var.vpc_cidr
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  tags = merge(var.tags, {
+    Name = "${var.project_name}-${var.environment}-vpc"
+  })
+}
+
+resource "aws_subnet" "public" {
+  count = length(var.availability_zones)
+
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = var.public_subnet_cidrs[count.index]
+  availability_zone       = var.availability_zones[count.index]
+  map_public_ip_on_launch = true
+}
+```
+
+## 예시: 환경에서 모듈 호출
+```hcl
+module "vpc" {
+  source = "../../../modules/vpc"
+
+  project_name          = var.project_name
+  environment           = var.environment
+  vpc_cidr              = var.vpc_cidr
+  availability_zones    = var.availability_zones
+  public_subnet_cidrs   = var.public_subnet_cidrs
+  private_subnet_cidrs  = var.private_subnet_cidrs
+  enable_nat_gateway    = true
+}
+```
+
