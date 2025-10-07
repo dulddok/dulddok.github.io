@@ -96,8 +96,10 @@ h1.fs-9 {
 
 // HCL에서 키/식별자 토큰이 .nt/.vi로 붉게 표시되는 Rouge 스타일 보정
 .language-hcl .nt,
+.language-hcl .nx,
 .language-hcl .vi,
 .highlighter-rouge .language-hcl .nt,
+.highlighter-rouge .language-hcl .nx,
 .highlighter-rouge .language-hcl .vi {
   color: var(--body-text-color, #383942) !important;
 }
