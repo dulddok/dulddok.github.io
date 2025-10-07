@@ -83,3 +83,13 @@ h1.fs-9 {
 .language-terraform .p {
   color: var(--body-text-color, #383942);
 }
+
+// 로드 순서/캐시 영향 방지를 위한 높은 우선순위(동일색, !important)
+.highlighter-rouge .language-hcl .o,
+.highlighter-rouge .language-hcl .p,
+.highlighter-rouge .language-terraform .o,
+.highlighter-rouge .language-terraform .p,
+.language-hcl .highlight .o,
+.language-hcl .highlight .p {
+  color: var(--body-text-color, #383942) !important;
+}
