@@ -65,6 +65,7 @@ hero_ctas:
 
 ---
 
+{% raw %}
 <!--
 {: .warning }
 > This website documents the features of the current `main` branch of the Just the Docs theme. See [the CHANGELOG]({% link CHANGELOG.md %}) for a list of releases, new features, and bug fixes.
@@ -147,3 +148,4 @@ Just the Docs is committed to fostering a welcoming community.
 [customize]: #customize
 [use the template]: https://github.com/just-the-docs/just-the-docs-template/generate
 -->
+{% endraw %}

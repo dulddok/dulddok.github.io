@@ -1,6 +1,6 @@
 <p align="center">
     <h1 align="center">덜똑의 기술 블로그</h1>
-    <p align="center">기술과 개발에 대한 생각을 나누는 공간입니다.<br>다양한 기술 이야기를 담고 있습니다.</p>
+    <p align="center">기술과 개발에 대한 걸 정리하는 공간입니다.<br>다양한 이야기를 담는걸 목표로 합니다.</p>
     <p align="center"><strong><a href="https://dulddok.github.io/">블로그 바로가기</a></strong></p>
     <br><br>
 </p>
