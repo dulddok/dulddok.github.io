@@ -31,8 +31,8 @@ scripts/
 
 # init-backend-auto.sh 실행 후 출력된 리소스 이름으로 backend.tf 값을 갱신
 # 예시)
-#   bucket           = "terraform-state-dulddok-tfbackend-1759802272"
-#   dynamodb_table   = "terraform-locks-dulddok-tfbackend"
+#   bucket           = "terraform-state-${s3BucketName}"
+#   dynamodb_table   = "terraform-locks-${dynamoDbnName}"
 
 # backend (환경별 디렉터리에서 예제 파일 복사)
 cp environments/dev/networking/backend.hcl.example environments/dev/networking/backend.hcl
