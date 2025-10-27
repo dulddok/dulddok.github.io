@@ -16,6 +16,42 @@ make plan-dev-compute
 make deploy-dev-compute
 make destroy-dev-compute
 ```
+### 사용 결과 예시 
+
+**아래는 주요 Make 명령 실행 목록입니다.**
+```bash
+  clean           .terraform 디렉터리 정리
+  deploy-dev-compute dev 환경 compute 배포
+  deploy-dev-networking dev 환경 networking 배포
+  deploy-dev      dev 환경 전체 배포
+  deploy-prod-compute prod 환경 compute 배포
+  deploy-prod-networking prod 환경 networking 배포
+  deploy-prod     prod 환경 전체 배포
+  deploy-staging-compute staging 환경 compute 배포
+  deploy-staging-networking staging 환경 networking 배포
+  deploy-staging  staging 환경 전체 배포
+  destroy-dev-compute dev 환경 compute 삭제
+  destroy-dev-networking dev 환경 networking 삭제
+  destroy-prod-compute prod 환경 compute 삭제
+  destroy-prod-networking prod 환경 networking 삭제
+  destroy-staging-compute staging 환경 compute 삭제
+  destroy-staging-networking staging 환경 networking 삭제
+  dev-setup       dev 환경 전체 설정
+  format          모든 Terraform 파일 포맷팅
+  help            도움말 표시
+  init-backend    S3 백엔드 초기화
+  plan-dev-compute dev 환경 compute 계획
+  plan-dev-networking dev 환경 networking 계획
+  plan-prod-compute prod 환경 compute 계획
+  plan-prod-networking prod 환경 networking 계획
+  plan-staging-compute staging 환경 compute 계획
+  plan-staging-networking staging 환경 networking 계획
+  prod-setup      prod 환경 전체 설정
+  staging-setup   staging 환경 전체 설정
+  validate-dev    dev 환경 검증
+  validate-prod   prod 환경 검증
+  validate-staging staging 환경 검증
+  validate        모든 환경 및 서비스 검증
 
 ## 스크립트 개요
 
@@ -68,13 +104,17 @@ cd "$SERVICE_DIR"
 
 terraform init
 terraform validate
-
+# apply, destroy case 는 실행 시 plan 내용 먼저 수행 이후, 사용자 입력 필요 (수행 여부 yes/no)
 case $ACTION in
   plan) terraform plan -var-file="terraform.tfvars" ;;
   apply) terraform apply -var-file="terraform.tfvars" -auto-approve ;;
   destroy) terraform destroy -var-file="terraform.tfvars" -auto-approve ;;
 esac
 ```
+### make 실행 예시
+  ![make apply-dev-networking예시](/assets/images/iac/terraform/make-apply-dev.png)
+  ![make apply-dev-networking예시](/assets/images/iac/terraform/make-destory-net.png)
+  > 실제 배포/삭제는 plan -> 사용자 입력 (yes/no) -> auto-approve apply/destory 순으로 진행됩니다. 
 
 ## 검증 및 포맷팅
 ```bash
@@ -84,4 +124,3 @@ esac
 # 포맷팅
 make format
 ```
-
