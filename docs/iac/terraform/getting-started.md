@@ -18,9 +18,10 @@ scripts/
 ```
 
 ## 디렉터리 내 공통 요소
-`.terraform/` 디렉터리는 **Terraform이 자동으로 생성하고 관리**하는 작업 디렉터리\
-`.terraform.lock.hcl`은 **프로바이더와 모듈의 정확한 버전을 잠그는** 파일\
-상태 파일은 **Terraform이 관리하는 리소스의 현재 상태**를 저장합니다.
+
+- `.terraform/` 디렉터리: **Terraform이 자동으로 생성하고 관리**하는 작업 디렉터리
+- `.terraform.lock.hcl`: **프로바이더와 모듈의 정확한 버전을 잠그는** 파일
+- 상태 파일 (`terraform.tfstate`): **Terraform이 관리하는 리소스의 현재 상태**를 저장
 
 
 ## 백엔드/변수 준비
@@ -41,7 +42,7 @@ cp environments/dev/networking/backend.hcl.example environments/dev/networking/b
 cp environments/dev/networking/terraform.tfvars.example environments/dev/networking/terraform.tfvars
 ```
 
-자세한 예제와 스크립트는 저장소를 참고하세요: [dulddok/Terraform-Dulddok](https://github.com/dulddok/Terraform-Dulddok)
+> 💡 **참고**: 자세한 예제와 스크립트는 저장소를 참고하세요: [dulddok/Terraform-Dulddok](https://github.com/dulddok/Terraform-Dulddok)
 
 ### 예시: backend.tf / backend.hcl
 ```terraform
@@ -51,7 +52,7 @@ terraform {
 }
 ```
 
-```terraform
+```hcl
 # backend.hcl (예시)
 bucket         = "<your-tfstate-bucket>"
 key            = "dev/networking/terraform.tfstate"
@@ -77,17 +78,26 @@ provider "aws" {
 ```
 
 ## 초기화/실행
+
 ```bash
+# 1. 백엔드 초기화
 terraform -chdir=environments/dev/networking init -backend-config=backend.hcl
+
+# 2. 실행 계획 확인
 terraform -chdir=environments/dev/networking plan
+
+# 3. 리소스 생성/변경 적용
 terraform -chdir=environments/dev/networking apply -auto-approve
 ```
 
 ## Compute 실행 예
+
 ```bash
+# 1. 설정 파일 복사
 cp environments/dev/compute/backend.hcl.example environments/dev/compute/backend.hcl
 cp environments/dev/compute/terraform.tfvars.example environments/dev/compute/terraform.tfvars
 
+# 2. 초기화 및 실행
 terraform -chdir=environments/dev/compute init -backend-config=backend.hcl
 terraform -chdir=environments/dev/compute plan
 terraform -chdir=environments/dev/compute apply -auto-approve
@@ -114,17 +124,22 @@ terraform init
 # 문제: 상태 파일 손상
 Error: Failed to load state: state file is corrupted
 
-# 해결: S3 versioning 내 확인
+# 해결: S3 버전 관리에서 이전 버전 확인 및 복원
+# AWS 콘솔에서 S3 버킷 > 버전 관리 > 이전 버전 선택하여 복원
+# 또는 terraform state pull > terraform state push 사용
 ```
 
-#### 3. 잠금 파일 문제
+#### 3. 프로바이더 버전 제약 문제
 
 ```bash
-# 문제: 잠금 파일 버전 충돌
+# 문제: 프로바이더 버전 제약 변경
 Error: Provider version constraints are changed
 
 # 해결: 잠금 파일 업데이트
 terraform init -upgrade
+
+# 또는 특정 프로바이더만 업그레이드
+terraform init -upgrade -backend=false
 ```
 
 ### 디버깅 명령어
