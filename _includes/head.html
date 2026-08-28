@@ -14,7 +14,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
-  <link id="just-the-docs-theme-stylesheet" rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
   <script>
     (function() {
       var theme = null;
@@ -22,13 +21,15 @@
       if (theme !== 'dark' && theme !== 'blue') {
         theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'blue';
       }
-      var el = document.getElementById('just-the-docs-theme-stylesheet');
-      if (el) {
-        el.href = el.href.replace(/just-the-docs-[a-z]+\.css/, 'just-the-docs-' + theme + '.css');
-      }
       document.documentElement.setAttribute('data-jtd-theme', theme);
+      var href = {{ '/assets/css/just-the-docs-blue.css' | relative_url | jsonify }};
+      href = href.replace('just-the-docs-blue.css', 'just-the-docs-' + theme + '.css');
+      document.write('<link id="just-the-docs-theme-stylesheet" rel="stylesheet" href="' + href + '">');
     })();
   </script>
+  <noscript>
+    <link id="just-the-docs-theme-stylesheet" rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  </noscript>
 
   <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-head-nav.css' | relative_url }}" id="jtd-head-nav-stylesheet">
 

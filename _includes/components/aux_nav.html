@@ -54,6 +54,9 @@
       try { localStorage.setItem('jtd-theme', theme); } catch (e) {}
       toggle.setAttribute('aria-pressed', theme === DARK_THEME ? 'true' : 'false');
       applyGiscusTheme(theme);
+      if (typeof window.jtdApplyMermaidTheme === 'function') {
+        window.jtdApplyMermaidTheme();
+      }
     }
 
     toggle.setAttribute('aria-pressed', currentTheme() === DARK_THEME ? 'true' : 'false');

@@ -150,3 +150,18 @@ h1.fs-9 {
 .highlighter-rouge .language-hcl .vi {
   color: var(--body-text-color, #383942) !important;
 }
+
+.language-mermaid {
+  background: transparent !important;
+
+  .highlight,
+  pre.highlight {
+    background: transparent !important;
+    border: 0;
+  }
+
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}

@@ -4,7 +4,47 @@ The complexity of this file comes from a breaking change in Mermaid v10; mermaid
 So, we check whether the user's Mermaid version is >= 10; if not, we fall back to the previous init syntax.
 
 If a user is using a custom mermaid file and doesn't specify a version, we default to the < v10 behaviour. Users who use version v10 or above should specify this in the version key.
+
+Theme follows the site toggle (`data-jtd-theme`) via window.jtdApplyMermaidTheme.
 {% endcomment %}
+
+<script>
+  window.jtdMermaid = {
+    extraConfig: {% include mermaid_config.js %},
+    isDark: function() {
+      return document.documentElement.getAttribute('data-jtd-theme') === 'dark';
+    },
+    config: function() {
+      var dark = this.isDark();
+      var extra = this.extraConfig || {};
+      var themeVariables = Object.assign({}, extra.themeVariables || {}, {
+        darkMode: dark,
+        background: 'transparent'
+      });
+      return Object.assign({}, extra, {
+        startOnLoad: false,
+        theme: dark ? 'dark' : 'default',
+        themeVariables: themeVariables
+      });
+    },
+    capture: function() {
+      if (this.nodes) return;
+      this.nodes = Array.prototype.slice.call(document.querySelectorAll('.language-mermaid'));
+      this.sources = this.nodes.map(function(node) {
+        return node.innerHTML;
+      });
+    },
+    restore: function() {
+      if (!this.nodes) return;
+      var sources = this.sources;
+      this.nodes.forEach(function(node, index) {
+        node.removeAttribute('data-processed');
+        node.removeAttribute('data-mermaid-processed');
+        node.innerHTML = sources[index];
+      });
+    }
+  };
+</script>
 
 {% if site.mermaid.version %}
   {% assign mermaid_major_version = site.mermaid.version | split: "." | first | plus: 0 %}
@@ -21,11 +61,22 @@ If a user is using a custom mermaid file and doesn't specify a version, we defau
   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@{{ site.mermaid.version }}/dist/mermaid.esm.min.mjs';
   {% endif %}
 
-  var config = {% include mermaid_config.js %};
-  mermaid.initialize(config);
-  mermaid.run({
-    querySelector: '.language-mermaid',
+  window.jtdMermaid.capture();
+  mermaid.initialize(window.jtdMermaid.config());
+  await mermaid.run({
+    nodes: window.jtdMermaid.nodes,
+    querySelector: window.jtdMermaid.nodes.length ? undefined : '.language-mermaid',
+    suppressErrors: true
   });
+
+  window.jtdApplyMermaidTheme = async function() {
+    window.jtdMermaid.restore();
+    mermaid.initialize(window.jtdMermaid.config());
+    await mermaid.run({
+      nodes: window.jtdMermaid.nodes,
+      suppressErrors: true
+    });
+  };
 </script>
 
 {% else %}
@@ -37,9 +88,19 @@ If a user is using a custom mermaid file and doesn't specify a version, we defau
 {% endif %}
 
 <script>
-  var config = {% include mermaid_config.js %};
-  mermaid.initialize(config);
-  window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+  window.jtdMermaid.capture();
+  mermaid.initialize(window.jtdMermaid.config());
+  if (window.jtdMermaid.nodes && window.jtdMermaid.nodes.length) {
+    window.mermaid.init(undefined, window.jtdMermaid.nodes);
+  }
+
+  window.jtdApplyMermaidTheme = function() {
+    window.jtdMermaid.restore();
+    mermaid.initialize(window.jtdMermaid.config());
+    if (window.jtdMermaid.nodes && window.jtdMermaid.nodes.length) {
+      window.mermaid.init(undefined, window.jtdMermaid.nodes);
+    }
+  };
 </script>
 
 {% endif %}
