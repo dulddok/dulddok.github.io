@@ -1,5 +1,16 @@
 <nav aria-label="Auxiliary" class="aux-nav">
   <ul class="aux-nav-list">
+    <li class="aux-nav-list-item">
+      <button class="btn-reset theme-toggle" id="theme-toggle" type="button" aria-label="색상 테마 전환" title="색상 테마 전환">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 1 0 11.3 11.3z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </li>
     {% for link in site.aux_links %}
       <li class="aux-nav-list-item">
         <a href="{{ link.last }}" class="site-button"
@@ -13,3 +24,47 @@
     {% endfor %}
   </ul>
 </nav>
+<script>
+  (function() {
+    var LIGHT_THEME = 'blue';
+    var DARK_THEME = 'dark';
+    var toggle = document.getElementById('theme-toggle');
+    if (!toggle || typeof jtd === 'undefined') return;
+
+    function currentTheme() {
+      return document.documentElement.getAttribute('data-jtd-theme') || LIGHT_THEME;
+    }
+
+    function giscusThemeName(theme) {
+      return theme === DARK_THEME ? 'dark' : 'light_protanopia';
+    }
+
+    function applyGiscusTheme(theme) {
+      var iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe || !iframe.contentWindow) return;
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: giscusThemeName(theme) } } },
+        'https://giscus.app'
+      );
+    }
+
+    function setTheme(theme) {
+      jtd.setTheme(theme);
+      document.documentElement.setAttribute('data-jtd-theme', theme);
+      try { localStorage.setItem('jtd-theme', theme); } catch (e) {}
+      toggle.setAttribute('aria-pressed', theme === DARK_THEME ? 'true' : 'false');
+      applyGiscusTheme(theme);
+    }
+
+    toggle.setAttribute('aria-pressed', currentTheme() === DARK_THEME ? 'true' : 'false');
+
+    jtd.addEvent(toggle, 'click', function() {
+      setTheme(currentTheme() === DARK_THEME ? LIGHT_THEME : DARK_THEME);
+    });
+
+    window.addEventListener('message', function(event) {
+      if (event.origin !== 'https://giscus.app') return;
+      applyGiscusTheme(currentTheme());
+    });
+  })();
+</script>

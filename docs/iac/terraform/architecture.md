@@ -3,6 +3,8 @@ layout: default
 title: 아키텍처
 nav_order: 3
 parent: Terraform
+description: VPC, ALB, EC2 모듈 구조와 환경별 조합
+last_modified_date: 2025-10-08
 ---
 
 ## 개요

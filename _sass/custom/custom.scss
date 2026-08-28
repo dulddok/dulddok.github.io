@@ -1,5 +1,43 @@
 // custom SCSS (or CSS) goes here
 
+:root {
+  --body-text-color: #{$body-text-color};
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.75rem;
+  color: $link-color;
+  cursor: pointer;
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+  }
+
+  .icon-sun {
+    display: none;
+  }
+
+  .icon-moon {
+    display: block;
+  }
+}
+
+html[data-jtd-theme="dark"] .theme-toggle {
+  .icon-sun {
+    display: block;
+  }
+
+  .icon-moon {
+    display: none;
+  }
+}
+
 // Giscus Comments Styling
 .giscus-comments {
   margin-top: 2rem;
@@ -35,32 +73,41 @@
 
 // Recent Documents Styling
 .recent-doc-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid $border-color;
+  border-radius: 6px;
   transition: all 0.3s ease;
-  background: var(--background-color);
+  background: $body-background-color;
   
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary-color) !important;
+    border-color: $link-color !important;
   }
-  
+
   h3 {
+    margin: 0 0 0.5rem 0;
+
     a {
-      color: var(--text-color);
+      color: $body-heading-color;
       text-decoration: none;
-      
+
       &:hover {
-        color: var(--primary-color);
+        color: $link-color;
       }
     }
   }
   
   p {
+    margin: 0 0 0.5rem 0;
     line-height: 1.5;
+    color: $body-text-color;
   }
-  
+
   small {
     font-size: 0.875rem;
+    color: $nav-child-link-color;
   }
 }
 

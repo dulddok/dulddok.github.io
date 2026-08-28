@@ -3,6 +3,7 @@ title: Home
 layout: home
 nav_order: 0
 comments: false
+has_toc: false
 description: "덜똑의 기술 블로그 - 모니터링, 개발 팁, 기술 리뷰를 다루는 블로그입니다. 실무 경험과 문제 해결 방법을 공유합니다."
 permalink: /
 hero_body: "덜똑의 기술 블로그 - 모니터링, 개발 실무 팁, 그리고 다양한 기술 경험을 공유하는 공간입니다."
@@ -36,29 +37,32 @@ hero_ctas:
 
 <div id="recent-docs">
 
-{% assign all_docs = site.pages %}
-{% assign recent_docs = all_docs | slice: 0, 6 %}
-{% for doc in recent_docs %}
-  {% if doc.path contains 'docs/' and doc.path != 'docs/index.md' and doc.path != 'docs/test-giscus.md' %}
-    <div class="recent-doc-item" style="margin-bottom: 1rem; padding: 1rem; border: 1px solid var(--border-color); border-radius: 6px;">
-      <h3 style="margin: 0 0 0.5rem 0;">
-        <a href="{{ doc.url | relative_url }}">{{ doc.title | default: doc.name | replace: '.md', '' | replace: '-', ' ' | capitalize }}</a>
-      </h3>
-      {% if doc.description %}
-        <p style="margin: 0 0 0.5rem 0; color: var(--text-muted);">{{ doc.description }}</p>
-      {% endif %}
-      <small style="color: var(--text-muted);">
-        📁 {{ doc.path | split: '/' | slice: 1, 2 | join: ' > ' }}
-        {% if doc.date %}
-          • 📅 {{ doc.date | date: "%Y년 %m월 %d일" }}
-        {% endif %}
-      </small>
-    </div>
-  {% endif %}
+{% assign recent_docs = site.pages
+  | where_exp: "doc", "doc.path contains 'docs/'"
+  | where_exp: "doc", "doc.path != 'docs/test-giscus.md'"
+  | where_exp: "doc", "doc.last_modified_date"
+  | sort: "last_modified_date"
+  | reverse %}
+
+{% assign shown_docs = 0 %}
+{% for doc in recent_docs limit: 6 %}
+  {% assign shown_docs = shown_docs | plus: 1 %}
+  <div class="recent-doc-item">
+    <h3>
+      <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+    </h3>
+    {% if doc.description %}
+      <p>{{ doc.description }}</p>
+    {% endif %}
+    <small>
+      {{ doc.path | split: '/' | slice: 1, 2 | join: ' › ' }}
+      • {{ doc.last_modified_date | date: "%Y년 %m월 %d일" }}
+    </small>
+  </div>
 {% endfor %}
 
-{% if recent_docs.size == 0 %}
-  <p>아직 작성된 문서가 없습니다. 곧 새로운 내용으로 찾아뵙겠습니다! 🚀</p>
+{% if shown_docs == 0 %}
+  <p>아직 작성된 문서가 없습니다. 곧 새로운 내용으로 찾아뵙겠습니다.</p>
 {% endif %}
 
 </div>

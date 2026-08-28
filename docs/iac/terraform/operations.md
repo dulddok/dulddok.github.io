@@ -3,6 +3,8 @@ layout: default
 title: 실행과 자동화
 nav_order: 4
 parent: Terraform
+description: Makefile 타깃과 Terraform 배포 워크플로
+last_modified_date: 2025-10-28
 ---
 
 ## Makefile 사용

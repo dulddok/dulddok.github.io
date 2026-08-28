@@ -4,6 +4,8 @@ title: Terraform
 nav_order: 1
 parent: IaC
 has_children: true
+description: Terraform Dulddok Lab 개요와 실습 저장소
+last_modified_date: 2025-10-08
 ---
 
 # Terraform Dulddok Lab

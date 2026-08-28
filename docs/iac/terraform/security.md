@@ -3,6 +3,8 @@ layout: default
 title: 보안과 베스트 프랙티스
 nav_order: 5
 parent: Terraform
+description: 상태 파일, 권한 분리, 민감정보 관리
+last_modified_date: 2025-10-08
 ---
 
 ## 공개 저장소 원칙

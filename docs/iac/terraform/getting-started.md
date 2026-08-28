@@ -3,6 +3,8 @@ layout: default
 title: 시작하기
 nav_order: 2
 parent: Terraform
+description: Terraform 실습 환경 준비와 디렉터리 구조
+last_modified_date: 2026-01-06
 ---
 
 ## 사전 준비
