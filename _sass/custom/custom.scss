@@ -151,6 +151,93 @@ h1.fs-9 {
   color: var(--body-text-color, #383942) !important;
 }
 
+// On-page outline (이 페이지 목차)
+.page-outline {
+  display: none;
+}
+
+html.has-page-outline {
+  @media (min-width: 96rem) {
+    .main {
+      max-width: $content-width + 16rem;
+    }
+
+    .page-body {
+      display: flex;
+      align-items: flex-start;
+      gap: $sp-6;
+    }
+
+    .main-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: $content-width;
+    }
+
+    .page-outline {
+      display: block;
+      flex: 0 0 13.5rem;
+      position: sticky;
+      top: $header-height + $sp-4;
+      max-height: calc(100vh - #{$header-height} - #{$sp-8});
+      overflow: auto;
+      padding-left: $sp-3;
+      border-left: 1px solid $border-color;
+    }
+  }
+}
+
+.page-outline__title {
+  margin: 0 0 $sp-3;
+  font-size: $font-size-2;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: $nav-child-link-color;
+}
+
+.page-outline__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-outline__item--h3 {
+  padding-left: $sp-3;
+}
+
+.page-outline__link {
+  display: block;
+  padding: 0.2rem 0;
+  font-size: $font-size-3;
+  line-height: 1.45;
+  color: $nav-child-link-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $link-color;
+  }
+
+  &.is-active {
+    font-weight: 700;
+    color: $body-heading-color;
+  }
+}
+
+.main-content > main {
+  h2[id],
+  h3[id],
+  h4[id] {
+    scroll-margin-top: $header-height + $sp-4;
+  }
+}
+
+@media print {
+  .page-outline {
+    display: none !important;
+  }
+}
+
 .language-mermaid {
   background: transparent !important;
 

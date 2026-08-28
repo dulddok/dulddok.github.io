@@ -1,0 +1,104 @@
+{% comment %}
+  On-page outline (이 페이지 목차). Built from heading anchors in main.
+  Disable with `page_outline: false` in front matter.
+{% endcomment %}
+{% unless page.page_outline == false %}
+<nav class="page-outline" id="page-outline" aria-label="이 페이지 목차" hidden>
+  <p class="page-outline__title">이 페이지</p>
+  <ul class="page-outline__list" id="page-outline-list"></ul>
+</nav>
+<script>
+  (function() {
+    var nav = document.getElementById('page-outline');
+    var list = document.getElementById('page-outline-list');
+    var main = document.querySelector('#main-content main');
+    if (!nav || !list || !main) return;
+
+    var headings = Array.prototype.filter.call(
+      main.querySelectorAll('h2[id], h3[id]'),
+      function(heading) {
+        if (heading.classList.contains('text-delta')) return false;
+        if (heading.closest('.giscus-comments')) return false;
+        return true;
+      }
+    );
+
+    if (headings.length < 2) return;
+
+    var ignoreObserverUntil = 0;
+
+    headings.forEach(function(heading) {
+      var item = document.createElement('li');
+      item.className = 'page-outline__item page-outline__item--h' + heading.tagName.charAt(1);
+
+      var link = document.createElement('a');
+      link.className = 'page-outline__link';
+      link.href = '#' + heading.id;
+      link.textContent = heading.textContent.replace(/\s+/g, ' ').trim();
+
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        ignoreObserverUntil = Date.now() + 700;
+        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (history.replaceState) {
+          history.replaceState(null, '', '#' + heading.id);
+        }
+        setActive(heading.id);
+      });
+
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    nav.hidden = false;
+    document.documentElement.classList.add('has-page-outline');
+
+    var links = list.querySelectorAll('.page-outline__link');
+
+    function setActive(id) {
+      Array.prototype.forEach.call(links, function(link) {
+        var active = link.getAttribute('href') === '#' + id;
+        link.classList.toggle('is-active', active);
+        if (active) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      setActive(headings[0].id);
+      return;
+    }
+
+    var visible = [];
+    var observer = new IntersectionObserver(function(entries) {
+      if (Date.now() < ignoreObserverUntil) return;
+      entries.forEach(function(entry) {
+        var id = entry.target.id;
+        var index = visible.indexOf(id);
+        if (entry.isIntersecting) {
+          if (index === -1) visible.push(id);
+        } else if (index !== -1) {
+          visible.splice(index, 1);
+        }
+      });
+
+      if (!visible.length) return;
+
+      var active = headings.find(function(heading) {
+        return visible.indexOf(heading.id) !== -1;
+      });
+      if (active) setActive(active.id);
+    }, {
+      rootMargin: '-20% 0px -65% 0px',
+      threshold: 0
+    });
+
+    headings.forEach(function(heading) {
+      observer.observe(heading);
+    });
+  })();
+</script>
+{% endunless %}

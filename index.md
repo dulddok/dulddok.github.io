@@ -4,6 +4,7 @@ layout: home
 nav_order: 0
 comments: false
 has_toc: false
+page_outline: false
 description: "덜똑의 기술 블로그 - 모니터링, 개발 팁, 기술 리뷰를 다루는 블로그입니다. 실무 경험과 문제 해결 방법을 공유합니다."
 permalink: /
 hero_body: "덜똑의 기술 블로그 - 모니터링, 개발 실무 팁, 그리고 다양한 기술 경험을 공유하는 공간입니다."
